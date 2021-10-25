@@ -31,11 +31,11 @@ Dependencies
 
 
 
-#### [DB 설계도](https://github.com/2miri/springboot-final-project/blob/main/DB 설계도.png)
+#### [DB 설계도](https://github.com/2miri/springboot-final-project/blob/main/DB%20%EC%84%A4%EA%B3%84%EB%8F%84.png)
 
-#### [API명세서](https://github.com/2miri/springboot-final-project/blob/main/API 명세서.md)
+#### [API명세서](https://github.com/2miri/springboot-final-project/blob/main/API%20%EB%AA%85%EC%84%B8%EC%84%9C.md)
 
-#### [API 화면구성도](https://github.com/2miri/springboot-final-project/blob/main/API 화면구성도.pdf)
+#### [API 화면구성도](https://github.com/2miri/springboot-final-project/blob/main/API%20%ED%99%94%EB%A9%B4%EA%B5%AC%EC%84%B1%EB%8F%84.pdf)
 
 
 
