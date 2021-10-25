@@ -1,0 +1,137 @@
+<div id="review_div">
+
+    <div th:if="${reviewList.isEmpty()}" style="text-align: center;">
+        <img th:src="@{/images/no_content.svg}" style="width: 300px; height: 300px;"
+             class="no_content" id="no_content"/>
+        <h1 class="no_content">검색 결과가 없습니다</h1>
+    </div>
+
+    <div class="table" id="review_table" th:each="review : ${reviewList}" th:object="${review}">
+
+
+        <table class="table table-borderless wd-100">
+            <tr>
+                <td colspan="5" th:text="*{address} + '  '+ *{detailAddress}"> 주소</td>
+            </tr>
+
+            <tr>
+
+                <td rowspan="4" style="width: 400px; height: 200px">
+                    <div th:if="*{#lists.isEmpty(uploadImage)}"
+                         style="display: table; width: 400px; height: 200px">
+                        <a th:href="@{/review/read(id=*{id})}" th:value="*{id}" class="review_read"
+                           style="text-decoration-line: none; color:black;">
+                            <div style="display: table-cell; text-align: center; vertical-align: middle; ">
+                                <img th:src="@{/images/no_photo.png}" style="width: 350px; height: 200px;"
+                                     class="no_photo"/>
+                            </div>
+                        </a>
+                    </div>
+                    <div th:unless="*{#lists.isEmpty(uploadImage)}"
+                         style="display: table; width: 400px; height: 200px">
+                        <a th:href="@{/review/read(id=*{id})}" th:value="*{id}" class="review_read"
+                           style="text-decoration-line: none; color:black;">
+                            <div style="display: table-cell; text-align: center; vertical-align: middle; ">
+                                <img th:src="@{*{uploadImage[0].imagePath}}"
+                                     style="width: 350px; height: 200px;"
+                                     class="photo"/>
+                            </div>
+                        </a>
+                    </div>
+                </td>
+
+
+                <td colspan="2">
+                    <a th:href="@{/review/read(id=*{id})}" th:value="*{id}" class="review_read"
+                       style="text-decoration-line: none; color:black;">
+                        <span th:text="*{postName} + '&nbsp;&nbsp;'" style="font-size: 23px;"/>
+                        <span th:text="*{#temporals.format(regdate, 'yyyy-MM-dd')}"
+                              style="font-size: 15px; color: grey"/>
+                    </a>
+                </td>
+
+
+                <td rowspan="4">
+                    <div style="text-align: center">
+                        <p th:text="*{hit}" style="font-size : 40px; "/>
+                        조회
+                    </div>
+                </td>
+                <td rowspan="4">
+                    <div style="text-align: center" id="like_div">
+                        <button type="button" class="like"
+                                style="border:0px; outline:0px;background-color:transparent;"
+                                th:id="like" th:value="*{id}">
+                            <img th:src="@{ ${member?.likes?.contains(review)} ? '/images/like_red.svg' : '/images/like.svg'}"
+                                 th:id="*{id}" width="50px" height="75px"></button>
+                        <p th:text="'좋아요 '+ *{likers.size}" th:id="likeNum + *{id}"/>
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" th:if="*{star} == 0">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                </td>
+                <td colspan="2" th:if="*{star} == 1">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                </td>
+                <td colspan="2" th:if="*{star} == 2">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                </td>
+                <td colspan="2" th:if="*{star} == 3">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                </td>
+                <td colspan="2" th:if="*{star} == 4">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star.svg}" width="20px" height="20px">
+                </td>
+                <td colspan="2" th:if="*{star} == 5">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                    <img th:src="@{~/images/star_yellow.svg}" width="20px" height="20px">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" th:text="*{comment}"> 코멘트</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+
+                                <span th:if="*{tags != null}" th:each="t:*{tags}">
+                                    <span th:text="${t.tagName}" style="background-color: #eeeeee"></span>
+                                </span>
+                    <span th:if="*{tags == null}">
+                                <span th:text="등록된 태그가 없습니다"></span>
+                                </span>
+
+                </td>
+            </tr>
+        </table>
+
+
+        <hr class="col-12 my-4">
+    </div>
+
+</div>
