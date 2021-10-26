@@ -233,7 +233,9 @@ Dependencies
 
    그러다 Spring Data JPA의 Specification을 알게 되었다.
 
-   이 객체를 통해서 검색 조건을 추상화 할 수 있고, 리턴 자료형을 Specification<@>으로 두는 메서드를 만들고 해당 메서드 내부에서는 list와 switch문 그리고 자료형 Predicate를 이용해 알맞는 검색조건에 추가하는 방식으로 구현했다.
+   이 객체를 통해서 검색 조건을 추상화 할 수 있었다.
+
+   리턴 자료형을 Specification<@>으로 두는 메서드를 만들고 해당 메서드 내부에서는 list와 switch문 그리고 자료형 Predicate를 이용해 알맞는 검색조건에 추가하는 방식으로 구현했다.
 
    Specifications을 사용하면 두개 이상의 specfication을 and나 or등으로 조합 할 수 있다.
 
